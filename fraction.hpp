@@ -45,6 +45,7 @@ class Fraction {
     isNeg = false;
     reduce(this);
   };
+  // Addition
   Fraction operator+(Fraction const &obj) {
     int d = lcm(denom, obj.denom);
     int n1 = numer * (d / denom) * ((isNeg) ? -1 : 1);
@@ -53,6 +54,12 @@ class Fraction {
     reduce(&res);
     return res;
   };
+  Fraction operator+(int const n) {
+    Fraction res((numer * (isNeg) ? -1 : 1) + (n * denom), denom);
+    reduce(&res);
+    return res;
+  };
+  // Subtraction
   Fraction operator-(Fraction const &obj) {
     int d = lcm(denom, obj.denom);
     int n1 = numer * (d / denom) * ((isNeg) ? -1 : 1);
@@ -61,6 +68,12 @@ class Fraction {
     reduce(&res);
     return res;
   };
+  Fraction operator-(int const n) {
+    Fraction res((numer * (isNeg) ? -1 : 1) - (n * denom), denom);
+    reduce(&res);
+    return res;
+  };
+  // Multiplication
   Fraction operator*(Fraction const &obj) {
     Fraction res(numer * obj.numer, denom * obj.denom);
     if (isNeg) res.isNeg = !(res.isNeg);
@@ -68,6 +81,12 @@ class Fraction {
     reduce(&res);
     return res;
   };
+  Fraction operator*(int const n) {
+    Fraction res((numer * (isNeg) ? -1 : 1) * n, denom);
+    reduce(&res);
+    return res;
+  };
+  // Division
   Fraction operator/(Fraction const &obj) {
     Fraction res(numer * obj.denom, denom * obj.numer);
     if (isNeg) res.isNeg = !(res.isNeg);
@@ -75,6 +94,12 @@ class Fraction {
     reduce(&res);
     return res;
   };
+  Fraction operator/(int const n) {
+    Fraction res((numer * (isNeg) ? -1 : 1), denom * n);
+    reduce(&res);
+    return res;
+  };
+  // Conversions
   string toString() {
     return ((isNeg) ? "-" : "") + to_string(numer) + "/" + to_string(denom);
   }
