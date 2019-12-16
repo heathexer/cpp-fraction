@@ -75,11 +75,11 @@ class Fraction {
     reduce(&res);
     return res;
   };
-  // Fraction operator=(Fraction const &obj) {
-  //   Fraction res(obj.numer, obj.denom);
-  //   return res;
-  // };
   string toString() {
     return ((isNeg) ? "-" : "") + to_string(numer) + "/" + to_string(denom);
+  }
+  float toFloat() { return ((isNeg) ? -1 : 1) * (float)numer / (float)denom; }
+  double toDouble() {
+    return ((isNeg) ? -1 : 1) * (double)numer / (double)denom;
   }
 };
