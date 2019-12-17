@@ -99,6 +99,17 @@ class Fraction {
     reduce(&res);
     return res;
   };
+  // Comparisons
+  bool operator<(Fraction &obj) { return (toDouble()) < (obj.toDouble()); }
+  bool operator>(Fraction &obj) { return (toDouble()) > (obj.toDouble()); }
+  bool operator==(Fraction &obj) {
+    return numer == obj.numer && denom == obj.denom;
+  }
+  bool operator!=(Fraction &obj) {
+    return numer != obj.numer || denom != obj.denom;
+  }
+  bool operator<=(Fraction &obj) { return (this < &obj || this == &obj); }
+  bool operator>=(Fraction &obj) { return (this > &obj || this == &obj); }
   // Conversions
   string toString() {
     return ((isNeg) ? "-" : "") + to_string(numer) + "/" + to_string(denom);

@@ -7,6 +7,7 @@ int main() {
   Fraction a(-1, 3);
   Fraction b(2, 4);
   Fraction c;
+  bool eq;
   cout << "a: " + a.toString() + '\n';
   cout << "b: " + b.toString() + '\n';
   c = a + b;
@@ -27,5 +28,13 @@ int main() {
   cout << "a*4: " + c.toString() + '\n';
   c = b / -5;
   cout << "b/-5: " + c.toString() + '\n';
+  eq = a > b;
+  cout << "a>b: " + to_string(eq) + '\n';
+  eq = a < b;
+  cout << "a<b: " + to_string(eq) + '\n';
+  eq = a == b;
+  cout << "a==b: " + to_string(eq) + '\n';
+  eq = a != b;
+  cout << "a!=b: " + to_string(eq) + '\n';
   return EXIT_SUCCESS;
 }
